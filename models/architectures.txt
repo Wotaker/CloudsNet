@@ -1,0 +1,25 @@
+=== I my_first_model ===
+
+model = Sequential([
+    normalization_layer,
+    layers.Conv2D(16, 3, padding="same", activation="relu"),
+    layers.MaxPool2D(3, strides=3, padding="same"),
+    layers.Conv2D(32, 3, padding="same", activation="relu"),
+    layers.MaxPool2D(3, strides=3, padding="same"),
+    layers.Flatten(),
+    layers.Dense(
+        128, 
+        activation="relu",
+        kernel_regularizer=tf.keras.regularizers.l2(0.02)
+    ),
+    layers.Dense(num_classes)
+])
+
+model.compile(
+    optimizer=tf.keras.optimizers.Adam(learning_rate=lr),
+    loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
+    metrics=[tf.metrics.SparseCategoricalAccuracy()]
+)
+
+=== conv_conv_pool ===
+
